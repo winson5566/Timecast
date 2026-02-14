@@ -2,19 +2,13 @@
 
 ## Project Introduction
 
-Timecast is a web app that turns historical news from a custom time range into a playable podcast.
-Users can choose categories, date range, language, and region, then generate a podcast with script, summary, and event highlights.
+Timecast is a multilingual podcast generation platform powered by large language models (LLMs). It automatically curates and semantically rewrites historical news within specified categories, regions, and time ranges, producing podcasts in multiple languages so that audiences around the world can “hear history” in their native language.
 
 ### UI Preview
-
-Chinese UI:
-
-![Chinese UI](./images/cn.png)
-
-English UI:
-
-![English UI](./images/en.png)
-
+![English UI](./images/en1.png)
+![English UI](./images/en2.png)
+![Chinese UI](./images/cn1.png)
+![Chinese UI](./images/cn2.png)
 ## Features
 
 - Google login
