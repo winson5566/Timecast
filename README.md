@@ -2,7 +2,7 @@
 
 ## Project Introduction
 
-Timecast is a multilingual podcast generation platform powered by large language models. It automatically curates historical news based on specified categories, regions, and time ranges, and generates podcasts in multiple languages, enabling audiences around the world to “hear history” in their native language.
+Timecast is a multilingual podcast generation platform powered by large language models. It automatically curates historical news based on specified categories, regions, and time ranges, and generates podcasts in multiple languages — making history audible.
 
 ### UI Preview
 ![English UI](./images/en1.png)
