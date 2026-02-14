@@ -9,11 +9,11 @@ Users can choose categories, date range, language, and region, then generate a p
 
 Chinese UI:
 
-![Chinese UI](./data/images/cn.png)
+![Chinese UI](./images/cn.png)
 
 English UI:
 
-![English UI](./data/images/en.png)
+![English UI](./images/en.png)
 
 ## Features
 
