@@ -5,6 +5,16 @@
 Timecast is a web app that turns historical news from a custom time range into a playable podcast.
 Users can choose categories, date range, language, and region, then generate a podcast with script, summary, and event highlights.
 
+### UI Preview
+
+Chinese UI:
+
+![Chinese UI](./data/images/cn.png)
+
+English UI:
+
+![English UI](./data/images/en.png)
+
 ## Features
 
 - Google login
