@@ -18,6 +18,28 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
+const LANGUAGE_NAME_MAP = {
+  zh: { zh: '中文', en: 'Chinese' },
+  en: { zh: '英文', en: 'English' },
+  ja: { zh: '日文', en: 'Japanese' },
+  ko: { zh: '韩文', en: 'Korean' },
+  es: { zh: '西班牙文', en: 'Spanish' },
+  fr: { zh: '法文', en: 'French' },
+  de: { zh: '德文', en: 'German' },
+  pt: { zh: '葡萄牙文', en: 'Portuguese' },
+};
+
+const LANGUAGE_VOICE_MAP = {
+  zh: 'Kore',
+  en: 'Aoede',
+  ja: 'Kore',
+  ko: 'Kore',
+  es: 'Aoede',
+  fr: 'Aoede',
+  de: 'Aoede',
+  pt: 'Aoede',
+};
+
 async function ensureStorage() {
   if (!existsSync(DATA_FILE)) {
     await fs.writeFile(DATA_FILE, '[]', 'utf8');
@@ -71,7 +93,7 @@ async function verifyGoogleIdToken(idToken) {
 }
 
 function buildNewsPrompt({ categories, startDate, endDate, language, region }) {
-  const langText = language === 'zh' ? '中文' : 'English';
+  const langText = LANGUAGE_NAME_MAP[language]?.zh || '中文';
 
   return [
     `你是资深新闻编辑与研究助手。目标：围绕指定时间段与地区，整理“权威 + 重要 + 有趣”的历史新闻条目，形成可用于播客的事件清单。`,
@@ -107,7 +129,7 @@ function buildNewsPrompt({ categories, startDate, endDate, language, region }) {
 }
 
 function buildPodcastPrompt({ language, categories, startDate, endDate, region, events }) {
-  const langName = language === 'zh' ? '中文' : 'English';
+  const langName = LANGUAGE_NAME_MAP[language]?.en || 'English';
 
   return [
     `You are an experienced news podcast host and editor.`,
@@ -390,7 +412,7 @@ async function createAudioWithGemini({ text, language, podcastId }) {
   }
   const apiVersions = getGeminiApiVersions();
   const ttsModels = getGeminiTtsModels();
-  const voiceName = language === 'zh' ? 'Kore' : 'Aoede';
+  const voiceName = LANGUAGE_VOICE_MAP[language] || 'Aoede';
   let audioBase64 = '';
   let mimeType = 'audio/wav';
   let lastError = 'Unknown Gemini TTS error';

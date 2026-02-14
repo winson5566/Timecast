@@ -118,6 +118,17 @@ const regionOptions = [
   { value: 'New Zealand', zh: '新西兰', en: 'New Zealand' },
 ];
 
+const languageOptions = [
+  { value: 'zh', zh: '中文', en: 'Chinese' },
+  { value: 'en', zh: '英文', en: 'English' },
+  { value: 'ja', zh: '日文', en: 'Japanese' },
+  { value: 'ko', zh: '韩文', en: 'Korean' },
+  { value: 'es', zh: '西班牙文', en: 'Spanish' },
+  { value: 'fr', zh: '法文', en: 'French' },
+  { value: 'de', zh: '德文', en: 'German' },
+  { value: 'pt', zh: '葡萄牙文', en: 'Portuguese' },
+];
+
 let currentLang = 'zh';
 let googleIdToken = '';
 let userProfile = null;
@@ -139,6 +150,7 @@ function applyLanguage() {
     node.textContent = t(key);
   });
   document.getElementById('langToggle').textContent = currentLang === 'zh' ? 'EN' : '中';
+  renderLanguageOptions();
   renderCategories();
   renderRegions();
   updateAuthUI();
@@ -167,6 +179,15 @@ function renderRegions() {
     .map((r) => `<option value="${r.value}">${currentLang === 'zh' ? r.zh : r.en}</option>`)
     .join('');
   regionSelect.value = previous;
+}
+
+function renderLanguageOptions() {
+  const languageSelect = document.getElementById('language');
+  const previous = languageSelect.value || 'zh';
+  languageSelect.innerHTML = languageOptions
+    .map((l) => `<option value="${l.value}">${currentLang === 'zh' ? l.zh : l.en}</option>`)
+    .join('');
+  languageSelect.value = previous;
 }
 
 function getCategoryLabel(value) {
