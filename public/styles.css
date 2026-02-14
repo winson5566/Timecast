@@ -482,8 +482,8 @@ audio {
 
 .split {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  grid-template-columns: 1fr;
+  gap: 10px;
 }
 
 pre {
@@ -502,6 +502,13 @@ pre {
 
 #eventsList li {
   margin-bottom: 8px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+#summary {
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .reveal {
