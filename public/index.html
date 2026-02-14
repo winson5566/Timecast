@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timecast</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </head>
+  <body class="landing-body">
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-grid"></div>
+
+    <main class="shell reveal">
+      <header class="hero card glass">
+        <div id="g_id_onload"></div>
+        <div class="hero-title">
+          <p class="eyebrow">TIMECAST</p>
+          <h1 data-i18n="heroTitle">Make history audible.</h1>
+        </div>
+        <div class="top-controls">
+          <button id="langToggle" class="lang-mini">EN</button>
+          <button id="authToggle" class="lang-mini">账号</button>
+        </div>
+        <div id="authPanel" class="auth-panel">
+          <p class="meta" id="userInfo" data-i18n="notLoggedIn">未登录</p>
+          <div id="googleBtn"></div>
+          <div class="actions">
+            <button id="logoutBtn" class="btn ghost" data-i18n="logout" style="display: none">退出登录</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="layout">
+        <aside class="panel card glass reveal-delay-1">
+          <h2 data-i18n="configTitle">配置你的历史新闻 Podcast</h2>
+          <label data-i18n="categoriesLabel">新闻分类（可多选）</label>
+          <div id="categories" class="categories"></div>
+
+          <div class="row">
+            <div>
+              <label data-i18n="startDate">开始日期</label>
+              <input id="startDate" type="date" />
+            </div>
+            <div>
+              <label data-i18n="endDate">结束日期</label>
+              <input id="endDate" type="date" />
+            </div>
+          </div>
+
+          <div>
+            <label data-i18n="language">播客语言</label>
+            <select id="language">
+              <option value="zh">中文</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+
+          <div>
+            <label data-i18n="region">国家或地区</label>
+            <select id="region"></select>
+          </div>
+
+          <div class="actions">
+            <button id="generateBtn" class="btn primary" data-i18n="generate">生成 Podcast</button>
+          </div>
+          <div id="genProgress" class="progress-wrap" style="display: none">
+            <div class="progress-track">
+              <div id="genProgressBar" class="progress-bar"></div>
+            </div>
+            <div class="progress-text"><span id="genProgressText">0%</span></div>
+          </div>
+          <p class="status" id="status"></p>
+        </aside>
+
+        <section class="result-stack reveal-delay-2">
+          <article class="card result-card" id="historyCard">
+            <div class="history-head">
+              <h3 data-i18n="historyTitle">我的 Podcasts</h3>
+              <button id="clearHistoryBtn" class="btn danger-outline" data-i18n="clearAll">全部清空</button>
+            </div>
+            <p class="meta" id="historyMeta" data-i18n="historyEmpty">登录后查看你的历史生成记录</p>
+            <div id="historyList" class="history-list"></div>
+          </article>
+
+          <article id="resultCard" class="card result-card" style="display: none">
+            <h2 id="podcastTitle"></h2>
+            <p class="meta" id="podcastMeta"></p>
+            <audio id="audioPlayer" controls></audio>
+
+            <h3 data-i18n="script">播报稿</h3>
+            <pre id="scriptText"></pre>
+
+            <div class="split">
+              <div>
+                <h3 data-i18n="summary">摘要</h3>
+                <p id="summary"></p>
+              </div>
+              <div>
+                <h3 data-i18n="events">新闻事件</h3>
+                <ul id="eventsList"></ul>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button id="copyLinkBtn" class="btn ghost" data-i18n="copyLink">复制分享链接</button>
+            </div>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
